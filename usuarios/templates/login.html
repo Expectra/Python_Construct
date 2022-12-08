@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'body' %}
+    <div class="container">
+        {% if messages %}
+            <br>
+            {% for message in messages%}
+                <div class="alert {{message.tags}}">{{message}}</div>
+            {% endfor%}
+        {% endif %}
+        <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+            <br>
+            <label>Usuário</label>
+            <input type="text" placeholder="Digite o seu username" name="email" class="form-control">
+
+            <br>
+            <label>Senha</label>
+            <input type="password" placeholder="Digite o sua senha" name="senha" class="form-control">
+            <br>
+            <input type="submit" class="btn btn-info" value="Logar">
+        </form>
+
+        <hr class="bg-hr">
+
+
+    </div>
+{% endblock %}
+
